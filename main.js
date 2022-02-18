@@ -2,6 +2,9 @@ const area = document.querySelector('.area');
 const box = document.querySelector('.box');
 const boxes = document.querySelectorAll('.box')
 const table = document.querySelector('table')
+const audio = document.querySelector('audio')
+const modal = document.querySelector('.modal')
+const windowBlock = document.querySelector('.windowBlock')
 let step = 0;
 
 const win  = [
@@ -16,6 +19,8 @@ const win  = [
 ]
 
 area.addEventListener('click',e =>{
+
+
     if(e.target.classList.contains('box') && !e.target.innerText){
         e.target.innerHTML = step % 2 === 0 ? 'X' : '0'
         step ++
@@ -52,7 +57,10 @@ const countResult = ()=>{
 
 
 const finish = (winner,item)=>{
-    alert(`Победили ${winner} за ${Math.round(step / 2)} ${ Math.round(step / 2) < 4 ? 'хода': 'ходов'}`)
+    audio.play()
+    windowBlock.textContent = `Победили ${winner} за ${Math.round(step / 2)} ${ Math.round(step / 2) <= 4 ? 'хода': 'ходов'}`
+    area.style.display = 'none'
+    modal.style.display = 'flex'
     if(arr.length === 10){
         arr.shift()
     }
@@ -64,7 +72,9 @@ const finish = (winner,item)=>{
         arr.push({'Крестики':0,'Нолики':1,'Ничья':0})
         localStorage.setItem('ticTacToe',JSON.stringify(arr))
     }
-        location.reload()
+       setTimeout(()=>{
+           location.reload()
+       },5000)
 }
 
 

@@ -70,3 +70,26 @@ footer {
 table, th {
     border:1px solid white;
 }
+.modal{
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #c70000;
+    opacity: 0.5;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content:center
+}
+.windowBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 70vh;
+    background: url('img/salut.svg') no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
